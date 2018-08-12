@@ -55,12 +55,15 @@ public class WorkflowServiceImpl implements WorkflowService {
             if (!result.equals(Constants.JEDIS_OK))
                 throw new TinyBitException(ErrorEnum.COULD_NOT_CREATE_RECORD);
 
+            // incr counter
+            dbService.increment();
         } catch (Exception e) {
             throw e;
         } finally {
             lock.unlock();
         }
         // end critical section
+
         return key;
     }
 
@@ -74,6 +77,8 @@ public class WorkflowServiceImpl implements WorkflowService {
             if(detail == null)
                 throw new TinyBitException(ErrorEnum.INVALID_KEY);
 
+            // incr counter
+            dbService.increment();
         } catch (Exception e) {
             e.printStackTrace();
             throw new TinyBitException(ErrorEnum.INVALID_KEY);

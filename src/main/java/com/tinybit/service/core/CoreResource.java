@@ -1,6 +1,7 @@
 package com.tinybit.service.core;
 
 import com.tinybit.exception.TinyBitException;
+import com.tinybit.model.Counter;
 import com.tinybit.model.Detail;
 import com.tinybit.service.db.DbService;
 import com.tinybit.service.db.DbServiceImpl;
@@ -20,7 +21,7 @@ public class CoreResource {
     private DbService dbService = new DbServiceImpl(jedis);
     private WorkflowService workflowService = new WorkflowServiceImpl(dbService);
 
-    @Path("{key}")
+    @Path("key/{key}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -41,4 +42,17 @@ public class CoreResource {
         detail.setKey(key);
         return Response.ok(detail).status(Response.Status.OK).build();
     }
+
+    @Path("counter")
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCounter() {
+
+        Long currentCount = dbService.getCount();
+        Counter counter = null;
+        counter = new Counter(currentCount);
+        return Response.ok(counter).status(Response.Status.OK).build();
+    }
+
 }

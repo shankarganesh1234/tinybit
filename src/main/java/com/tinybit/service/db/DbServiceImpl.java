@@ -58,4 +58,28 @@ public class DbServiceImpl implements DbService {
             return Constants.JEDIS_ERROR;
         return jedis.set(key, value);
     }
+
+    /**
+     *
+     */
+    public Long increment() {
+        return jedis.incr(Constants.INCR_KEY);
+    }
+
+    @Override
+    public Long getCount() {
+
+        String count = jedis.get(Constants.INCR_KEY);
+
+        if(count == null)
+            return 0L;
+
+        Long currentCount = 0L;
+        try {
+            currentCount = Long.valueOf(count);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return currentCount;
+    }
 }

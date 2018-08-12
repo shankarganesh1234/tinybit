@@ -5,16 +5,18 @@ public class CoinDetail {
     private String name;
     private String symbol;
     private String imageUrl;
+    private String alias;
     private String walletAddress;
 
     public CoinDetail() {
 
     }
 
-    public CoinDetail(String name, String symbol, String imageUrl, String walletAddress) {
+    public CoinDetail(String name, String symbol, String imageUrl, String alias, String walletAddress) {
         this.name = name;
         this.symbol = symbol;
         this.imageUrl = imageUrl;
+        this.alias = alias;
         this.walletAddress = walletAddress;
     }
 
@@ -51,4 +53,11 @@ public class CoinDetail {
     }
 
 
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
 }

@@ -50,7 +50,7 @@ public class DbServiceTest {
     private List<CoinDetail> getMockCoinDetails() {
 
         List<CoinDetail> coinDetails = new ArrayList<>();
-        CoinDetail coinDetail = new CoinDetail("name", "symbol", "image", "123456");
+        CoinDetail coinDetail = new CoinDetail("name", "symbol", "image", "alias", "123456");
         coinDetails.add(coinDetail);
         return coinDetails;
     }
