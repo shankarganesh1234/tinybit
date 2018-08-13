@@ -17,8 +17,7 @@ public class DbServiceTest {
     private static final String NON_EXISTENT_KEY = "nonExistentKey";
     private static final String KEY = "xxx";
 
-    Jedis jedis = new Jedis();
-    private DbService dbService = new DbServiceImpl(jedis);
+    private DbService dbService = new DbServiceImpl();
 
     @Test
     public void existsInvalidTest() {

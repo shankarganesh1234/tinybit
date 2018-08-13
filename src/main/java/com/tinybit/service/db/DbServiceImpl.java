@@ -9,8 +9,8 @@ public class DbServiceImpl implements DbService {
 
     private Jedis jedis = null;
 
-    public DbServiceImpl(Jedis jedis) {
-        this.jedis = jedis;
+    public DbServiceImpl() {
+        this.jedis = new Jedis();
     }
 
     /**
@@ -43,6 +43,11 @@ public class DbServiceImpl implements DbService {
         }
 
         return details;
+    }
+
+    @Override
+    public String getRecordString(String key) {
+        return jedis.get(key);
     }
 
 
@@ -82,4 +87,6 @@ public class DbServiceImpl implements DbService {
         }
         return currentCount;
     }
+
+
 }

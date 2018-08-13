@@ -1,6 +1,7 @@
 package com.tinybit.server;
 
 import com.tinybit.constants.Constants;
+import com.tinybit.scheduler.TinybitScheduler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.gzip.GzipHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -26,6 +27,7 @@ public class ServerMain {
         jerseyServlet.setInitParameter("jersey.config.server.provider.classnames", "org.glassfish.jersey.jackson.JacksonFeature,org.glassfish.jersey.jackson.JacksonBinder");
         try {
             jettyServer.start();
+            TinybitScheduler.begin(168);
             jettyServer.join();
         } finally {
             jettyServer.destroy();
