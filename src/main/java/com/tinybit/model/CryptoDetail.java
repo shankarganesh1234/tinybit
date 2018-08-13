@@ -2,6 +2,7 @@ package com.tinybit.model;
 
 public class CryptoDetail {
 
+    private String id;
     private String name;
     private String symbol;
     private String imageUrl;
@@ -10,12 +11,6 @@ public class CryptoDetail {
         this.name = "UNKNOWN";
         this.symbol = "UNKNOWN";
         this.imageUrl = "";
-    }
-
-    public CryptoDetail(String name, String symbol, String imageUrl) {
-        this.name = name;
-        this.symbol = symbol;
-        this.imageUrl = imageUrl;
     }
 
     public String getSymbol() {
@@ -40,5 +35,13 @@ public class CryptoDetail {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

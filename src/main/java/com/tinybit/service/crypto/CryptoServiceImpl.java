@@ -62,6 +62,7 @@ public class CryptoServiceImpl implements CryptoService, Job {
                 cryptoDetail.setSymbol(o.optString("Symbol", "UNKNOWN"));
                 cryptoDetail.setName(o.optString("CoinName", "UNKNOWN"));
                 cryptoDetail.setImageUrl(Constants.CC_BASE_URL + o.optString("ImageUrl", Constants.BTC_IMG));
+                cryptoDetail.setId(o.optString("Id", "0"));
                 cryptoDetails.add(cryptoDetail);
             }
 
