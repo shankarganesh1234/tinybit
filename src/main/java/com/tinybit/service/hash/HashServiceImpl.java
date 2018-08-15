@@ -23,6 +23,7 @@ public class HashServiceImpl implements HashService {
 
         byte[] hash = digest.digest(value.getBytes(StandardCharsets.UTF_8));
         String hashStr = new String(Base64.getUrlEncoder().encode(hash));
+        hashStr = hashStr.replaceAll("=", "x");
         return getTruncatedHash(hashStr);
     }
 
