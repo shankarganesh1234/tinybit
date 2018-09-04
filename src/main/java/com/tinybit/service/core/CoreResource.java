@@ -1,19 +1,18 @@
 package com.tinybit.service.core;
 
-import com.tinybit.exception.TinyBitException;
 import com.tinybit.model.Counter;
 import com.tinybit.model.CryptoDetail;
-import com.tinybit.model.Detail;
 import com.tinybit.service.crypto.CryptoService;
 import com.tinybit.service.crypto.CryptoServiceImpl;
 import com.tinybit.service.db.DbService;
 import com.tinybit.service.db.DbServiceImpl;
-import com.tinybit.service.workflow.WorkflowService;
-import com.tinybit.service.workflow.WorkflowServiceImpl;
 import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
