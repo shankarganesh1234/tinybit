@@ -7,7 +7,11 @@ public enum ErrorEnum {
     INVALID_KEY(10001, "Could not find any records with the given key"),
     EMPTY_DETAIL_REQUEST(10002, "Details are empty"),
     INVALID_DETAIL_REQUEST(10003, "Invalid details request"),
-    COULD_NOT_CREATE_RECORD(10004, "Could not create record");
+    COULD_NOT_CREATE_RECORD(10004, "Could not create record"),
+    EMPTY_NAME(10005, "Empty name"),
+    EMPTY_COIN_DETAILS(10006, "Empty coin details"),
+    MAX_LENGTH_EXCEEDED(10007, "Attempting to add too many wallets");
+
 
 
     private Integer code;

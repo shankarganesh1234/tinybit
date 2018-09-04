@@ -12,13 +12,18 @@ import com.tinybit.service.workflow.WorkflowService;
 import com.tinybit.service.workflow.WorkflowServiceImpl;
 import redis.clients.jedis.Jedis;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("tinybit")
 public class CoreResource {
+
+    @Context
+    private HttpServletRequest servletRequest;
 
     // pre prequisites
     private Jedis jedis = new Jedis();
@@ -29,7 +34,23 @@ public class CoreResource {
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+<<<<<<< HEAD
     public Response getCounter() {
+=======
+    public Response getRecord(@PathParam("key") String key) throws TinyBitException {
+
+        System.out.println(servletRequest);
+        Detail detail = workflowService.getRecord(key);
+        detail.setKey(key);
+        return Response.ok(detail).status(Response.Status.OK).build();
+
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createRecord(Detail detail) throws Exception {
+>>>>>>> 0ea5b2ee1c8816c41062e573005badbbad57b375
 
         Long currentCount = dbService.getCount();
         Counter counter = null;
