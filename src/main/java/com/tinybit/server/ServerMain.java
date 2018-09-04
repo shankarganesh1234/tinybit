@@ -17,7 +17,7 @@ public class ServerMain {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         context.setGzipHandler(gzipHandler);
-        Server jettyServer = new Server(8080);
+        Server jettyServer = new Server(8082);
         jettyServer.setHandler(context);
         ServletHolder jerseyServlet = context.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/*");
         jerseyServlet.setInitOrder(0);

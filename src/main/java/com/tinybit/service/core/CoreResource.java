@@ -23,38 +23,27 @@ public class CoreResource {
     // pre prequisites
     private Jedis jedis = new Jedis();
     private DbService dbService = new DbServiceImpl();
-    private WorkflowService workflowService = new WorkflowServiceImpl(dbService);
     private CryptoService cryptoService = new CryptoServiceImpl();
 
-    @Path("key/{key}")
-    @GET
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getRecord(@PathParam("key") String key) throws TinyBitException {
-
-        Detail detail = workflowService.getRecord(key);
-        detail.setKey(key);
-        return Response.ok(detail).status(Response.Status.OK).build();
-
-    }
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response createRecord(Detail detail) throws Exception {
-
-        String key = workflowService.createRecord(detail);
-        detail.setKey(key);
-        return Response.ok(detail).status(Response.Status.OK).build();
-    }
-
-    @Path("counter")
+    @Path("get_count")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCounter() {
 
         Long currentCount = dbService.getCount();
+        Counter counter = null;
+        counter = new Counter(currentCount);
+        return Response.ok(counter).status(Response.Status.OK).build();
+    }
+
+    @Path("add_count")
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response incrementCounter() {
+
+        Long currentCount = dbService.increment();
         Counter counter = null;
         counter = new Counter(currentCount);
         return Response.ok(counter).status(Response.Status.OK).build();
